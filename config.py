@@ -1,4 +1,4 @@
-# config.py - VERSIÓN MEJORADA
+# config.py
 import os
 import sys
 from datetime import timedelta
@@ -34,21 +34,16 @@ class Config:
     TIMEZONE = 'America/Santiago'
     ITEMS_PER_PAGE = 10
 
-    # Configuración de correo - CON VALORES POR DEFECTO ROBUSTOS
+    # Configuración de correo
     MAIL_SERVER = os.environ.get('MAIL_SERVER', 'smtp.gmail.com')
     MAIL_PORT = int(os.environ.get('MAIL_PORT', 587))
     MAIL_USE_TLS = os.environ.get('MAIL_USE_TLS', 'True').lower() == 'true'
     MAIL_USE_SSL = os.environ.get('MAIL_USE_SSL', 'False').lower() == 'true'
-    MAIL_USERNAME = os.environ.get('MAIL_USERNAME', '')
-    MAIL_PASSWORD = os.environ.get('MAIL_PASSWORD', '')
+    MAIL_USERNAME = os.environ.get('MAIL_USERNAME', 'infiwebspa@gmail.com')
+    MAIL_PASSWORD = os.environ.get('MAIL_PASSWORD', 'hiwkljhpjcqthypy')
     
-    # REMITENTE POR DEFECTO - ESTO ES CRÍTICO
-    mail_default_sender = os.environ.get('MAIL_DEFAULT_SENDER')
-    if not mail_default_sender:
-        # Si no hay MAIL_DEFAULT_SENDER, usar MAIL_USERNAME
-        mail_default_sender = MAIL_USERNAME or 'noreply@ticketsystem.com'
-    
-    MAIL_DEFAULT_SENDER = mail_default_sender
+    # Remitente por defecto
+    MAIL_DEFAULT_SENDER = os.environ.get('MAIL_DEFAULT_SENDER', ('TicketFlow', 'infiwebspa@gmail.com'))
     
     APP_URL = os.environ.get('APP_URL', 'http://127.0.0.1:5000')
     
